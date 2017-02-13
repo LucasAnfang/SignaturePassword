@@ -14,6 +14,7 @@
 int main(int argc, const char * argv[]) {
     char username[30];
     char password[30];
+    char passwordAttempt[30];
     initscr();
     
     addstr("What would you like your username to be? ");
@@ -62,8 +63,6 @@ int main(int argc, const char * argv[]) {
     for (int i=0;i < timedSignature -> mSize;i++) {
         printf("[%lf] ",timedSignature->times[i]);
     }
-    //printf("received %c (%d)\n", c, (int) c);
-    //if(c == '\n') std::cout << "enter was pressed\n";
-    
+
     return 0;
 }
