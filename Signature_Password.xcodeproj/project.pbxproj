@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BF1912E91E51A24200AC90F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1912E81E51A24200AC90F1 /* main.cpp */; };
+		BF1912F41E51A39900AC90F1 /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1912F21E51A39900AC90F1 /* Sha1.cpp */; };
+		BF1912F71E51AFCA00AC90F1 /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1912F61E51AFCA00AC90F1 /* libcurses.tbd */; };
+		BFA7AD1F1E51BF8700A9684A /* TimedSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,11 @@
 /* Begin PBXFileReference section */
 		BF1912E51E51A24200AC90F1 /* Signature_Password */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Signature_Password; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1912E81E51A24200AC90F1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BF1912F11E51A37300AC90F1 /* Sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sha1.h; sourceTree = "<group>"; };
+		BF1912F21E51A39900AC90F1 /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sha1.cpp; sourceTree = "<group>"; };
+		BF1912F61E51AFCA00AC90F1 /* libcurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurses.tbd; path = usr/lib/libcurses.tbd; sourceTree = SDKROOT; };
+		BFA7AD1C1E51BF7600A9684A /* TimedSignature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimedSignature.h; sourceTree = "<group>"; };
+		BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimedSignature.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1912F71E51AFCA00AC90F1 /* libcurses.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +52,7 @@
 			children = (
 				BF1912E71E51A24200AC90F1 /* Signature_Password */,
 				BF1912E61E51A24200AC90F1 /* Products */,
+				BF1912F51E51AFCA00AC90F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +67,37 @@
 		BF1912E71E51A24200AC90F1 /* Signature_Password */ = {
 			isa = PBXGroup;
 			children = (
+				BF1912F01E51A35400AC90F1 /* Implementation */,
+				BF1912EF1E51A34D00AC90F1 /* Headers */,
 				BF1912E81E51A24200AC90F1 /* main.cpp */,
 			);
 			path = Signature_Password;
+			sourceTree = "<group>";
+		};
+		BF1912EF1E51A34D00AC90F1 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BF1912F11E51A37300AC90F1 /* Sha1.h */,
+				BFA7AD1C1E51BF7600A9684A /* TimedSignature.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		BF1912F01E51A35400AC90F1 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				BF1912F21E51A39900AC90F1 /* Sha1.cpp */,
+				BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */,
+			);
+			name = Implementation;
+			sourceTree = "<group>";
+		};
+		BF1912F51E51AFCA00AC90F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF1912F61E51AFCA00AC90F1 /* libcurses.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1912F41E51A39900AC90F1 /* Sha1.cpp in Sources */,
+				BFA7AD1F1E51BF8700A9684A /* TimedSignature.cpp in Sources */,
 				BF1912E91E51A24200AC90F1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +286,7 @@
 				BF1912EE1E51A24200AC90F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,8 +6,18 @@
 //  Copyright © 2017 luke anfang. All rights reserved.
 //
 
-#ifndef TimedSignature_h
-#define TimedSignature_h
+#pragma once
+#include <string>
+#include <vector>
+#include <iostream>
+#include <map>
+#include <unordered_map>
 
-
-#endif /* TimedSignature_h */
+class TimedSignature
+{
+public:
+    TimedSignature();
+private:
+    float times[30];
+    int index;
+};
