@@ -16,8 +16,10 @@
 class TimedSignature
 {
 public:
-    TimedSignature();
+    TimedSignature(){ mSize = 0; };
+    void insertTime(float time);
+    float times[29];
+    int mSize;
 private:
-    float times[30];
-    int index;
+    
 };
