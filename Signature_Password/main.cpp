@@ -8,19 +8,29 @@
 
 #include <iostream>
 #include <curses.h>
+#include <string>
 #include "Timer.h"
 #include "TimedSignature.h"
+
+
 
 int main(int argc, const char * argv[]) {
     char username[30];
     char password[30];
-    char passwordAttempt[30];
+    //char passwordAttempt[30];
+    std::cout << "HIIIIII\n"; 
+    //initialize screan, sets up memory, clears the screan
     initscr();
-    
+ //moves the cursor
+    //int x = 10;
+    //int y = 10;
+    //move(y,x);
     addstr("What would you like your username to be? ");
+    //refreshes screan to match what is in memory
     refresh();
     getstr(username);
     
+
     addstr("Enter a password: ");
     //refresh();
     int passwordIndex = 0;
@@ -31,6 +41,7 @@ int main(int argc, const char * argv[]) {
     Timer* t = new Timer();
     while(!moribund)
     {
+        //waits for user input, returns int value of the key
         c = getch();
         if(c == '\n'){
             std::cout << "enter was pressed\n";
@@ -58,6 +69,7 @@ int main(int argc, const char * argv[]) {
         }
         //printw("[%s]",c);
     }
+    //deallocates memory, ends curses
     endwin();
     printf("\nPleased to meet you, %s !\n Shhhh this was your password [%s]!\n",username,password);
     for (int i=0;i < timedSignature -> mSize;i++) {
@@ -66,3 +78,5 @@ int main(int argc, const char * argv[]) {
 
     return 0;
 }
+
+
