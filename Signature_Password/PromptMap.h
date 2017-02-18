@@ -32,7 +32,7 @@ struct PromptFuntionMap
     void Login(Response r)
     {
         std::cout << "Login Called\n";
-    }
+    }//
     
     void Register(Response r)
     {
