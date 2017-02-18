@@ -8,6 +8,7 @@
 #pragma once
 #include <Map>
 #include <iostream>
+#include "TimedSignature.h"
 enum PromptValue
 {
     LoginPrompt,
@@ -18,30 +19,38 @@ enum PromptValue
     UsernameRequeryPrompt
 };
 
+struct Response
+{
+    char* username;
+    char* password;
+    PromptValue mRespondingToPrompt;
+    TimedSignature mTimedSignature;
+};
+
 struct PromptFuntionMap
 {
-    void Login()
+    void Login(Response r)
     {
         std::cout << "Login Called\n";
     }
     
-    void Register()
+    void Register(Response r)
     {
         std::cout << "Register Called\n";
     }
     
-    void SetUsername()
+    void SetUsername(Response r)
     {
         std::cout << "SetUsername Called\n";
     }
     
-    void SetPassword()
+    void SetPassword(Response r)
     {
         std::cout << "SetUsername Called\n";
     }
 };
 
-typedef void (PromptFuntionMap::*prompt_method)(void);
+typedef void (PromptFuntionMap::*prompt_method)(Response);
 typedef std::map<PromptValue, prompt_method> prompt_func_map;
 
 class PromptMap
