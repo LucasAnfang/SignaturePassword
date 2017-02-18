@@ -84,6 +84,15 @@ public:
         }
     }
     //static inline void Get
+    static inline void Service(PromptValue pv, Response r)
+    {
+        prompt_func_map::iterator x = FunctionMap.find(pv);
+        if (x != FunctionMap.end())
+        {
+            PromptFuntionMap m;
+            (m.*(x->second))(r);
+        }
+    }
  
 private:
     PromptMap();
