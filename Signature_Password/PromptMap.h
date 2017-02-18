@@ -5,6 +5,7 @@
 //  Created by luke anfang on 2/16/17.
 //  Copyright © 2017 luke anfang. All rights reserved.
 //
+#pragma once
 #include <Map>
 #include <iostream>
 enum PromptValue
@@ -19,54 +20,65 @@ enum PromptValue
 
 struct PromptFuntionMap
 {
-    double sinFunc(double x) { return 0.33; };
-    double cosFunc(double x) { return 0.66; };
+    void Login()
+    {
+        std::cout << "Login Called\n";
+    }
+    
+    void Register()
+    {
+        std::cout << "Register Called\n";
+    }
+    
+    void SetUsername()
+    {
+        std::cout << "SetUsername Called\n";
+    }
+    
+    void SetPassword()
+    {
+        std::cout << "SetUsername Called\n";
+    }
 };
 
 typedef void (PromptFuntionMap::*prompt_method)(void);
-typedef std::map<std::string, prompt_method> prompt_func_map;
+typedef std::map<PromptValue, prompt_method> prompt_func_map;
 
 class PromptMap
 {
 public:
-    
-inline const char* ToString(PromptValue p)
-{
-    switch (p)
+    static class _init
     {
-        case LoginPrompt:   return "Login";
-        case RegisterPrompt:    return "Register";
-        case UsernamePrompt:    return "Username";
-        case PasswordPrompt:    return "Password";
-        case PasswordRequeryPrompt: return "[Password Again";
-        case UsernameRequeryPrompt: return "Username Again";
-        default:    return "[Unknown PromptValue]";
+    public:
+        _init()
+        {
+            //Initialize variables :: mapping
+            FunctionMap[LoginPrompt] = &PromptFuntionMap::Login;
+            FunctionMap[RegisterPrompt] = &PromptFuntionMap::Register;
+            FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
+            FunctionMap[PasswordPrompt] = &PromptFuntionMap::SetPassword;
+            //FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
+        }
+    } _initializer;
+    
+    static inline const char* ToString(PromptValue p)
+    {
+        switch (p)
+        {
+            case LoginPrompt:   return "login";
+            case RegisterPrompt:    return "register";
+            case UsernamePrompt:    return "username";
+            case PasswordPrompt:    return "password";
+            case PasswordRequeryPrompt: return "password again";
+            case UsernameRequeryPrompt: return "username again";
+            default:    return "[Unknown PromptValue]";
+        }
     }
-}
-    
-void Login()
-{
-    std::cout << "Login Called\n";
-}
-    
-void Register()
-{
-    std::cout << "Register Called\n";
-}
-    
-void SetUsername()
-{
-    std::cout << "SetUsername Called\n";
-}
-    
-    
+    //static inline void Get
+ 
 private:
     PromptMap();
-//    std::map<PromptValue, std::string> m = {
-//        {Login, "Login"},
-//        {Register, "Register"},
-//        {Username, "Username"},
-//        {Password, "Password"}
-//    };
-    
+    static prompt_func_map FunctionMap;
 };
+
+

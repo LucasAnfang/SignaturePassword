@@ -18,7 +18,7 @@ public:
     // Prompt
     static void PromptOption(PromptValue option_one, PromptValue option_two);
     
-    // Prompt for username
+    // Prompt for singular value
     static void PromptForValue(PromptValue value_one);
     
     

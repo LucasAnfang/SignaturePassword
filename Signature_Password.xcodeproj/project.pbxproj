@@ -11,6 +11,7 @@
 		BF1912F41E51A39900AC90F1 /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1912F21E51A39900AC90F1 /* Sha1.cpp */; };
 		BF1912F71E51AFCA00AC90F1 /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1912F61E51AFCA00AC90F1 /* libcurses.tbd */; };
 		BF9B5C4C1E56B04800C99FE4 /* UserInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9B5C4B1E56B04800C99FE4 /* UserInputHandler.cpp */; };
+		BF9B5C4F1E57B2CE00C99FE4 /* PromptMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9B5C4E1E57B2CE00C99FE4 /* PromptMap.cpp */; };
 		BFA7AD1F1E51BF8700A9684A /* TimedSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */; };
 		BFAFAA7D1E5263EC009D9D62 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFAFAA7C1E5263EC009D9D62 /* Timer.cpp */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		BF9B5C4A1E56AFCF00C99FE4 /* UserInputHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInputHandler.h; sourceTree = "<group>"; };
 		BF9B5C4B1E56B04800C99FE4 /* UserInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInputHandler.cpp; sourceTree = "<group>"; };
 		BF9B5C4D1E56B64E00C99FE4 /* PromptMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromptMap.h; sourceTree = "<group>"; };
+		BF9B5C4E1E57B2CE00C99FE4 /* PromptMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptMap.cpp; sourceTree = "<group>"; };
 		BFA7AD1C1E51BF7600A9684A /* TimedSignature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimedSignature.h; sourceTree = "<group>"; };
 		BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimedSignature.cpp; sourceTree = "<group>"; };
 		BFAFAA7B1E5263CB009D9D62 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				BFA7AD1D1E51BF8700A9684A /* TimedSignature.cpp */,
 				BFAFAA7C1E5263EC009D9D62 /* Timer.cpp */,
 				BF9B5C4B1E56B04800C99FE4 /* UserInputHandler.cpp */,
+				BF9B5C4E1E57B2CE00C99FE4 /* PromptMap.cpp */,
 			);
 			name = Implementation;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				BF9B5C4C1E56B04800C99FE4 /* UserInputHandler.cpp in Sources */,
 				BFA7AD1F1E51BF8700A9684A /* TimedSignature.cpp in Sources */,
 				BF1912E91E51A24200AC90F1 /* main.cpp in Sources */,
+				BF9B5C4F1E57B2CE00C99FE4 /* PromptMap.cpp in Sources */,
 				BFAFAA7D1E5263EC009D9D62 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
