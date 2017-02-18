@@ -30,11 +30,13 @@ void UserInputHandler::PromptOption(PromptValue option_one, PromptValue option_t
     while ( userInput != option_one_s && userInput != option_two_s);
     if(userInput == option_one_s)
     {
-        std::cout << "Call to " << option_one_s << "\n";
+        //std::cout << "Call to " << option_one_s << "\n";
+        PromptMap::Service(option_one, nullptr);
     }
     else if(userInput == option_two_s)
     {
-        std::cout << "Call to " << option_two_s << "\n";
+        //std::cout << "Call to " << option_two_s << "\n";
+        PromptMap::Service(option_two, nullptr);
     }
 }
 

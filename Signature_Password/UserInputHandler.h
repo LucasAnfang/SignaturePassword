@@ -5,6 +5,7 @@
 //  Created by luke anfang on 2/16/17.
 //  Copyright © 2017 luke anfang. All rights reserved.
 //
+#pragma once
 #include <curses.h>
 #include "PromptMap.h"
 

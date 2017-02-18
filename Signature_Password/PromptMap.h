@@ -9,6 +9,7 @@
 #include <Map>
 #include <iostream>
 #include "TimedSignature.h"
+#include "UserInputHandler.h"
 enum PromptValue
 {
     LoginPrompt,
@@ -29,28 +30,28 @@ struct Response
 
 struct PromptFuntionMap
 {
-    void Login(Response r)
+    void Login(Response *r)
     {
         std::cout << "Login Called\n";
     }
     
-    void Register(Response r)
+    void Register(Response *r)
     {
         std::cout << "Register Called\n";
     }
     
-    void SetUsername(Response r)
+    void SetUsername(Response *r)
     {
         std::cout << "SetUsername Called\n";
     }
     
-    void SetPassword(Response r)
+    void SetPassword(Response *r)
     {
         std::cout << "SetUsername Called\n";
     }
 };
 
-typedef void (PromptFuntionMap::*prompt_method)(Response);
+typedef void (PromptFuntionMap::*prompt_method)(Response*);
 typedef std::map<PromptValue, prompt_method> prompt_func_map;
 
 class PromptMap
@@ -83,8 +84,8 @@ public:
             default:    return "[Unknown PromptValue]";
         }
     }
-    //static inline void Get
-    static inline void Service(PromptValue pv, Response r)
+    //service a response to a specific prompt utilizing the prompt to function mapping
+    static inline void Service(PromptValue pv, Response* r)
     {
         prompt_func_map::iterator x = FunctionMap.find(pv);
         if (x != FunctionMap.end())
