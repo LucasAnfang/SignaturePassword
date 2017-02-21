@@ -8,5 +8,5 @@
 
 #include <stdio.h>
 #include "PromptMap.h"
-prompt_func_map PromptMap::FunctionMap;
-PromptMap::_init PromptMap::_initializer;
+//prompt_func_map PromptMap::FunctionMap;
+//PromptMap::_init PromptMap::_initializer;

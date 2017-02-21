@@ -9,23 +9,32 @@
 #include <curses.h>
 #include "PromptMap.h"
 
+enum InterfaceType
+{
+   terminal
+};
+
 class UserInputHandler
 {
-public:
-    
+public:    
     // Start the curses terminal
-    static void Start();
-    
-    // Prompt
-    static void PromptOption(PromptValue option_one, PromptValue option_two);
-    
-    // Prompt for singular value
-    static void PromptForValue(PromptValue value_one);
-    
-    
-    
+    static void Start(InterfaceType it);
+    static void PromptOption_LoginSignup()
+    {
+        PromptValue choice = mPromptMap -> PromptOption(LoginPrompt, RegisterPrompt);
+        if(choice == LoginPrompt)
+        {
+            
+        }
+        else if(choice == RegisterPrompt)
+        {
+            
+        }
+    }
     
 private:
     UserInputHandler();
+    static PromptMap* mPromptMap;
+    static InterfaceType mInterfaceType;
     
 };

@@ -10,3 +10,4 @@
 void TimedSignature::insertTime(float time){
     times[mSize++] = time;
 }
+

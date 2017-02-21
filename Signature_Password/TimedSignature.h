@@ -39,6 +39,16 @@ public:
         Str << tss;
         return Str;
     }
+    
+    std::string getTSString()
+    {
+        std::string tss;
+        for (int i=0;i < mSize;i++)
+        {
+            tss += "[" + std::to_string(times[i]) + "] ";
+        }
+        return tss;
+    }
 private:
     
 };

@@ -17,7 +17,7 @@
 
 int main(int argc, const char * argv[]) {
     UserInputHandler::Start();
-    UserInputHandler::PromptOption(LoginPrompt, RegisterPrompt);
+    UserInputHandler::PromptOption_LoginSignup();
 //    char username[30];
 //    char password[30];
 //    //char passwordAttempt[30];
