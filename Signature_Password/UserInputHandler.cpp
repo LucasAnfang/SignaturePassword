@@ -7,10 +7,9 @@
 //
 
 #include "UserInputHandler.h"
-void UserInputHandler::Start(InterfaceType it)
+void UserInputHandler::Start()
 {
     //initscr();
-    mInterfaceType = it;
     mPromptMap = new PromptMap();
     std::cout << "START\n";
 }

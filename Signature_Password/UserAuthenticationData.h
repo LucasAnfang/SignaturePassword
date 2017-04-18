@@ -14,7 +14,10 @@ struct PasswordData
 class UserAthenticationData
 {
 public:
-    UserAthenticationData();
+    UserAthenticationData()
+    {
+        mRegistrationPasswordsSize = 0;
+    }
     
     void SetUsername(std::string username)
     {
@@ -26,27 +29,29 @@ public:
         return mUsername;
     }
     
-    void SetPassword(PasswordData passwordData)
+    void SetPassword(PasswordData *passwordData)
     {
         mPassword = passwordData;
     }
     
     void SetPassword(std::string password, TimedSignature ts)
     {
-        PasswordData pd = new PasswordData();
-        PasswordData.mPassword = password;
-        PasswordData.mTimedSignature = ts;
+        PasswordData* pd = new PasswordData();
+        pd -> mPassword = password;
+        pd -> mTimedSignature = ts;
         mPassword = pd;
     }
     
-    void InsertRegistrationPassword(Password ps){
-        mRegistrationPasswords.insert(ps);
+    void InsertRegistrationPassword(PasswordData ps){
+        mRegistrationPasswords[++mRegistrationPasswordsSize] = ps;
+        ++mRegistrationPasswordsSize;
     }
     
     void AverageRegistrationPasswords()
     {
-        for(PasswordData pd : mRegistrationPasswords){
-            
+        
+        for(int i = 1; i <= mRegistrationPasswordsSize ; i++){
+            //mRegistrationPasswords[i]
         }
     }
     
@@ -54,8 +59,9 @@ public:
 private:
     std::string mUsername;
     //this is the averaged password on register or the password on login
-    PasswordData mPassword;
+    PasswordData* mPassword;
     // this is the array of passwords on initial registration
     PasswordData mRegistrationPasswords [10];
+    int mRegistrationPasswordsSize;
     
 };

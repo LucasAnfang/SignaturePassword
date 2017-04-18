@@ -8,7 +8,7 @@
 #pragma once
 #include <Map>
 #include <iostream>
-#include "TimedSignature.h"
+//#include "TimedSignature.h"
 //#include "UserInputHandler.h"
 enum PromptValue
 {
@@ -25,7 +25,7 @@ struct Response
     char* username;
     char* password;
     PromptValue mRespondingToPrompt;
-    TimedSignature mTimedSignature;
+    //TimedSignature mTimedSignature;
 };
 
 struct PromptFuntionMap
@@ -33,6 +33,7 @@ struct PromptFuntionMap
     void Login(Response *r)
     {
         std::cout << "Login Called\n";
+        
     }
     
     void Register(Response *r)
