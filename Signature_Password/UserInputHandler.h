@@ -6,7 +6,7 @@
 //  Copyright © 2017 luke anfang. All rights reserved.
 //
 #pragma once
-#include <curses.h>
+//#include <curses.h>
 #include "PromptMap.h"
 #include "UserAuthenticationData.h"
 enum InterfaceType

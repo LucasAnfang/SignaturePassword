@@ -8,6 +8,8 @@
 #pragma once
 #include <Map>
 #include <iostream>
+#include "UserAuthenticationData.h"
+#include "UserSystemManager.h"
 //#include "TimedSignature.h"
 //#include "UserInputHandler.h"
 enum PromptValue
@@ -33,12 +35,56 @@ struct PromptFuntionMap
     void Login(Response *r)
     {
         std::cout << "Login Called\n";
+        UserSystemManager::get().PrintUserAuthenticationData();
+        //UserSystemManager::get().ClearUserSys();
+        //username#cdfdf
+        std::cout << "Enter Username: ";
+        std::string username;
+        std::cin >> username;
         
+        std::cout << "Enter Password: ";
+        std::string password;
+        std::cin >> password;
+        
+        UserAthenticationData uad;
+        uad.SetUsername(username);
+        TimedSignature ts;
+        uad.SetPassword(password, ts);
+        while(!UserSystemManager::get().VerifyUserAuthenticationRequest(uad))
+        {
+            std::cout << "Invalid authentication request\n";
+            std::cout << "Enter Username: ";
+            std::string username;
+            std::cin >> username;
+            
+            std::cout << "Enter Password: ";
+            std::string password;
+            std::cin >> password;
+            uad.SetUsername(username);
+            TimedSignature ts;
+            uad.SetPassword(password, ts);
+        }
+        //UserSystemManager::get().PrintUserAuthenticationData();
     }
     
     void Register(Response *r)
     {
         std::cout << "Register Called\n";
+        
+        std::cout << "Enter Username: ";
+        std::string username;
+        std::cin >> username;
+        
+        std::cout << "Enter Password: ";
+        std::string password;
+        std::cin >> password;
+        
+        UserAthenticationData uad;
+        uad.SetUsername(username);
+        TimedSignature ts;
+        uad.SetPassword(password, ts);
+        UserSystemManager::get().RegisterUser(uad);
+        UserSystemManager::get().PrintUserAuthenticationData();
     }
     
     void SetUsername(Response *r)

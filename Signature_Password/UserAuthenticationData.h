@@ -5,6 +5,7 @@
 //  Created by luke anfang on 2/20/17.
 //  Copyright © 2017 luke anfang. All rights reserved.
 //
+#pragma once
 #include "TimedSignature.h"
 struct PasswordData
 {
@@ -49,12 +50,15 @@ public:
     
     void AverageRegistrationPasswords()
     {
-        
         for(int i = 1; i <= mRegistrationPasswordsSize ; i++){
             //mRegistrationPasswords[i]
         }
     }
     
+    PasswordData GetPasswordData()
+    {
+        return *mPassword;
+    }
     
 private:
     std::string mUsername;

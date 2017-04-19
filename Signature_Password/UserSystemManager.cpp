@@ -11,11 +11,28 @@
 #include <regex>
 #include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
 
 bool UserSystemManager::VerifyUserAuthenticationRequest(UserAthenticationData &uad)
 {
+    std::ifstream userFile(USERS_FILE);
+    std::string entry;
+    while (std::getline(userFile, entry))
+    {
+        std::cout << "Checking against Entry [" << entry << "]";
+        UserAthenticationData entry_uad = ConvertEntryToUserAuthenticationData(entry);
+        if(uad.GetUsername() == entry_uad.GetUsername() && uad.GetPasswordData().mPassword == entry_uad.GetPasswordData().mPassword)
+        {
+            std::cout << " PASSED\n";
+            return true;
+        }
+        std::cout << " FAILED\n";
+    }
     return false;
 }
+
+
 
 bool UserSystemManager::VerifyUsernameAvailability(std::string& username)
 {
@@ -42,7 +59,13 @@ bool UserSystemManager::VerifyUsernameAvailability(std::string& username)
 
 void UserSystemManager::RegisterUser(UserAthenticationData& uad)
 {
-    
+    std::string entry = "";
+    entry += uad.GetUsername();
+    entry += "#";
+    entry += uad.GetPasswordData().mPassword;
+    std::cout << "Entry: " << entry << " to file " << USERS_FILE << std::endl;
+    std::ofstream log(USERS_FILE, std::ios_base::app | std::ios_base::out);
+    log << entry << std::endl;
 }
 
 UserAthenticationData UserSystemManager::ConvertEntryToUserAuthenticationData(std::string& entry)
@@ -67,9 +90,16 @@ void UserSystemManager::PrintUserAuthenticationData()
 {
     std::ifstream userFile(USERS_FILE);
     std::string entry;
-    
     while (std::getline(userFile, entry))
     {
         std::cout << entry << std::endl;
     }
+    userFile.close();
+}
+
+void UserSystemManager::ClearUserSys()
+{
+    std::ofstream ofs;
+    ofs.open(USERS_FILE, std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
 }

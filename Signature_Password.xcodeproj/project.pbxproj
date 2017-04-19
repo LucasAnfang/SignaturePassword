@@ -39,7 +39,6 @@
 		BF9B5C4B1E56B04800C99FE4 /* UserInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInputHandler.cpp; sourceTree = "<group>"; };
 		BF9B5C4D1E56B64E00C99FE4 /* PromptMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromptMap.h; sourceTree = "<group>"; };
 		BF9B5C4E1E57B2CE00C99FE4 /* PromptMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptMap.cpp; sourceTree = "<group>"; };
-		BFA2C9CB1EA72FD400BACC2A /* Users.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Users.txt; sourceTree = "<group>"; };
 		BFA2C9CC1EA7300100BACC2A /* UserSystemManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSystemManager.h; sourceTree = "<group>"; };
 		BFA2C9CD1EA730E800BACC2A /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		BFA2C9CE1EA7327100BACC2A /* UserSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserSystemManager.cpp; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 		BF1912E71E51A24200AC90F1 /* Signature_Password */ = {
 			isa = PBXGroup;
 			children = (
-				BFA2C9CA1EA72F9700BACC2A /* AuthenticationData */,
 				BF1912F01E51A35400AC90F1 /* Implementation */,
 				BF1912EF1E51A34D00AC90F1 /* Headers */,
 				BF1912E81E51A24200AC90F1 /* main.cpp */,
@@ -124,14 +122,6 @@
 				BF1912F61E51AFCA00AC90F1 /* libcurses.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BFA2C9CA1EA72F9700BACC2A /* AuthenticationData */ = {
-			isa = PBXGroup;
-			children = (
-				BFA2C9CB1EA72FD400BACC2A /* Users.txt */,
-			);
-			name = AuthenticationData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
