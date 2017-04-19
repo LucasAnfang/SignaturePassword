@@ -64,21 +64,7 @@ public:
         FunctionMap[RegisterPrompt] = &PromptFuntionMap::Register;
         FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
         FunctionMap[PasswordPrompt] = &PromptFuntionMap::SetPassword;
-        //FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
     }
-//    static class _init
-//    {
-//    public:
-//        _init()
-//        {
-//            //Initialize variables :: mapping
-//            FunctionMap[LoginPrompt] = &PromptFuntionMap::Login;
-//            FunctionMap[RegisterPrompt] = &PromptFuntionMap::Register;
-//            FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
-//            FunctionMap[PasswordPrompt] = &PromptFuntionMap::SetPassword;
-//            //FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
-//        }
-//    } _initializer;
     
     inline const char* ToString(PromptValue p)
     {
@@ -112,7 +98,7 @@ public:
         std::string userInput = "";
         do
         {
-            prompt +=  option_one_s + " or " + option_two_s
+            prompt =  option_one_s + " or " + option_two_s
             + " : (" + option_one_s + "/" + option_two_s + ")\n";
             std::cout << prompt;
             std::cin >> userInput;
@@ -121,14 +107,10 @@ public:
         if(userInput == option_one_s)
         {
             return option_one;
-            //std::cout << "Call to " << option_one_s << "\n";
-            //PromptMap::Service(option_one, nullptr);
         }
         else
         {
             return option_two;
-            //std::cout << "Call to " << option_two_s << "\n";
-            //PromptMap::Service(option_two, nullptr);
         }
     }
     
