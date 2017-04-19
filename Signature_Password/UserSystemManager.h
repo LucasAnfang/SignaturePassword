@@ -11,14 +11,18 @@
 #include "UserAuthenticationData.h"
 #include <string>
 #define DECLARE_SINGLETON(SingletonClass) friend class Singleton<SingletonClass>;
+#define USERS_FILE "AuthenticationData/Users.txt"
 class UserSystemManager : public Singleton<UserSystemManager>
 {
 public:
     bool VerifyUserAuthenticationRequest(UserAthenticationData& uad);
-    bool VerifyUsernameAvailability(UserAthenticationData& uad);
+    bool VerifyUsernameAvailability(std::string& username);
     void RegisterUser(UserAthenticationData& uad);
     
 private:
     UserAthenticationData ConvertEntryToUserAuthenticationData(std::string& entry);
+    std::string GetUsernameFromEntry(std::string& entry);
+    void PrintUserAuthenticationData();
+    
 };
 

@@ -29,7 +29,7 @@ public:
         return mUsername;
     }
     
-    void SetPassword(PasswordData *passwordData)
+    void SetPasswordData(PasswordData *passwordData)
     {
         mPassword = passwordData;
     }
