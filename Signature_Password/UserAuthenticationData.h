@@ -12,10 +12,10 @@ struct PasswordData
     std::string mPassword;
     TimedSignature mTimedSignature;
 };
-class UserAthenticationData
+class UserAuthenticationData
 {
 public:
-    UserAthenticationData()
+    UserAuthenticationData()
     {
         mRegistrationPasswordsSize = 0;
     }

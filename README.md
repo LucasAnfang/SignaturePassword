@@ -12,3 +12,5 @@ Steps are as follow [This is for the first build]:
     3.2) If not ... It is an hack! Close the gate!
     
 Later goals include using Sha1 encryption and salting a users password with the serialized password signature (keystroke delay sequence) and using a simple database to check against and store the users averaged password signature
+
+This program is turning out to be harder than I thought. detecting keystrokes in the terminal is a lot more complicated with ncurses. I am going to make another repo and work in javascript. This project then can be used by other devs to make their websites more secure. I will come back to this project once I have a better idea of how to approach the problem...

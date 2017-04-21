@@ -14,21 +14,23 @@
 #include <iostream>
 #include <sstream>
 
-bool UserSystemManager::VerifyUserAuthenticationRequest(UserAthenticationData &uad)
+bool UserSystemManager::VerifyUserAuthenticationRequest(UserAuthenticationData &uad)
 {
     std::ifstream userFile(USERS_FILE);
     std::string entry;
     while (std::getline(userFile, entry))
     {
         std::cout << "Checking against Entry [" << entry << "]";
-        UserAthenticationData entry_uad = ConvertEntryToUserAuthenticationData(entry);
+        UserAuthenticationData entry_uad = ConvertEntryToUserAuthenticationData(entry);
         if(uad.GetUsername() == entry_uad.GetUsername() && uad.GetPasswordData().mPassword == entry_uad.GetPasswordData().mPassword)
         {
+            userFile.close();
             std::cout << " PASSED\n";
             return true;
         }
         std::cout << " FAILED\n";
     }
+    userFile.close();
     return false;
 }
 
@@ -50,30 +52,32 @@ bool UserSystemManager::VerifyUsernameAvailability(std::string& username)
     {
         if(username == GetUsernameFromEntry(entry))
         {
+            userFile.close();
             return false;
         }
     }
-    
+    userFile.close();
     return true;
 }
 
-void UserSystemManager::RegisterUser(UserAthenticationData& uad)
+void UserSystemManager::RegisterUser(UserAuthenticationData& uad)
 {
     std::string entry = "";
     entry += uad.GetUsername();
     entry += "#";
     entry += uad.GetPasswordData().mPassword;
     std::cout << "Entry: " << entry << " to file " << USERS_FILE << std::endl;
-    std::ofstream log(USERS_FILE, std::ios_base::app | std::ios_base::out);
-    log << entry << std::endl;
+    std::ofstream userFile(USERS_FILE, std::ios_base::app | std::ios_base::out);
+    userFile << entry << std::endl;
+    userFile.close();
 }
 
-UserAthenticationData UserSystemManager::ConvertEntryToUserAuthenticationData(std::string& entry)
+UserAuthenticationData UserSystemManager::ConvertEntryToUserAuthenticationData(std::string& entry)
 {
     //entry = entry.substr(0, entry.find(";", 0)); //strip the comment
     std::string username = entry.substr(0,entry.find('#'));
     std::string password = entry.substr(entry.find('#')+1,entry.length()-1);
-    UserAthenticationData uad;
+    UserAuthenticationData uad;
     TimedSignature ts;
     //Get Timed Signature from the entry
     uad.SetUsername(username);
@@ -90,16 +94,18 @@ void UserSystemManager::PrintUserAuthenticationData()
 {
     std::ifstream userFile(USERS_FILE);
     std::string entry;
+    std::cout << "============USERS============\n";
     while (std::getline(userFile, entry))
     {
         std::cout << entry << std::endl;
     }
+    std::cout << "=============================\n";
     userFile.close();
 }
 
 void UserSystemManager::ClearUserSys()
 {
-    std::ofstream ofs;
-    ofs.open(USERS_FILE, std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
+    std::ofstream userFile;
+    userFile.open(USERS_FILE, std::ofstream::out | std::ofstream::trunc);
+    userFile.close();
 }

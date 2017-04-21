@@ -24,20 +24,18 @@ enum PromptValue
 
 struct Response
 {
-    char* username;
-    char* password;
+    bool success;
+    UserAuthenticationData uad;
     PromptValue mRespondingToPrompt;
-    //TimedSignature mTimedSignature;
 };
+
 
 struct PromptFuntionMap
 {
-    void Login(Response *r)
+    void Login(Response &r)
     {
         std::cout << "Login Called\n";
         UserSystemManager::get().PrintUserAuthenticationData();
-        //UserSystemManager::get().ClearUserSys();
-        //username#cdfdf
         std::cout << "Enter Username: ";
         std::string username;
         std::cin >> username;
@@ -46,7 +44,7 @@ struct PromptFuntionMap
         std::string password;
         std::cin >> password;
         
-        UserAthenticationData uad;
+        UserAuthenticationData uad;
         uad.SetUsername(username);
         TimedSignature ts;
         uad.SetPassword(password, ts);
@@ -64,41 +62,58 @@ struct PromptFuntionMap
             TimedSignature ts;
             uad.SetPassword(password, ts);
         }
-        //UserSystemManager::get().PrintUserAuthenticationData();
+        r.uad = uad;
     }
     
-    void Register(Response *r)
+    void Register(Response &r)
     {
         std::cout << "Register Called\n";
-        
+        UserSystemManager::get().PrintUserAuthenticationData();
         std::cout << "Enter Username: ";
         std::string username;
         std::cin >> username;
+        
+        while(!UserSystemManager::get().VerifyUsernameAvailability(username))
+        {
+            std::cout << "Invalid registration request (USERNAME ALREADY IN USE)\n";
+            std::cout << "Enter Username: ";
+            std::cin >> username;
+        }
         
         std::cout << "Enter Password: ";
         std::string password;
         std::cin >> password;
         
-        UserAthenticationData uad;
+        UserAuthenticationData uad;
         uad.SetUsername(username);
         TimedSignature ts;
         uad.SetPassword(password, ts);
+        r.uad = uad;
         UserSystemManager::get().RegisterUser(uad);
         UserSystemManager::get().PrintUserAuthenticationData();
+        
     }
     
-    void SetUsername(Response *r)
+    void MeasurePassword(Response &r)
+    {
+        std::cout << "Measure Password called\n";
+        std::cout << "Type your password as you normally would 10 times (hit enter between every entry)\nThis will be used to collect an averaged password signature for extra security\n";
+        std::cout << "Data measurement for user: " << r.uad.GetUsername() << std::endl;
+        
+    }
+    
+    void SetUsername(Response &r)
     {
         std::cout << "SetUsername Called\n";
     }
     
-    void SetPassword(Response *r)
+    void SetPassword(Response &r)
     {
         std::cout << "SetUsername Called\n";
     }
 };
 
-typedef void (PromptFuntionMap::*prompt_method)(Response*);
+typedef void (PromptFuntionMap::*prompt_method)(Response&);
 typedef std::map<PromptValue, prompt_method> prompt_func_map;
 
 class PromptMap
@@ -109,7 +124,7 @@ public:
         FunctionMap[LoginPrompt] = &PromptFuntionMap::Login;
         FunctionMap[RegisterPrompt] = &PromptFuntionMap::Register;
         FunctionMap[UsernamePrompt] = &PromptFuntionMap::SetUsername;
-        FunctionMap[PasswordPrompt] = &PromptFuntionMap::SetPassword;
+        FunctionMap[PasswordPrompt] = &PromptFuntionMap::MeasurePassword;
     }
     
     inline const char* ToString(PromptValue p)
@@ -120,13 +135,11 @@ public:
             case RegisterPrompt:    return "register";
             case UsernamePrompt:    return "username";
             case PasswordPrompt:    return "password";
-            case PasswordRequeryPrompt: return "password again";
-            case UsernameRequeryPrompt: return "username again";
             default:    return "[Unknown PromptValue]";
         }
     }
     //service a response to a specific prompt utilizing the prompt to function mapping
-    inline void Service(PromptValue pv, Response* r)
+    inline void Service(PromptValue pv, Response& r)
     {
         prompt_func_map::iterator x = FunctionMap.find(pv);
         if (x != FunctionMap.end())

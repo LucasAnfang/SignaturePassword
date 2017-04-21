@@ -22,14 +22,19 @@ public:
     void Start();
     void PromptOption_LoginSignup()
     {
+        Response response;
         PromptValue choice = mPromptMap -> PromptOption(LoginPrompt, RegisterPrompt);
-        mPromptMap -> Service(choice, nullptr);
+        response.mRespondingToPrompt = choice;
+        mPromptMap -> Service(choice, response);
+        if(response.mRespondingToPrompt == RegisterPrompt)
+        {
+            response.mRespondingToPrompt = PasswordPrompt;
+            mPromptMap -> Service(PasswordPrompt, response);
+        }
     }
     
     
 private:
     PromptMap* mPromptMap;
     InterfaceType mInterfaceType;
-    UserAthenticationData* mUserAuthenticationData;
-    
 };

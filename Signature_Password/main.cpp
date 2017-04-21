@@ -7,7 +7,9 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <curses.h>
+#include <iostream>
 #include <string>
 #include "Timer.h"
 #include "TimedSignature.h"
@@ -19,6 +21,7 @@ int main(int argc, const char * argv[]) {
     UserInputHandler UIH(InterfaceType::terminal);
     UIH.Start();
     UIH.PromptOption_LoginSignup();
+    
 //    char username[30];
 //    char password[30];
 //    //char passwordAttempt[30];
